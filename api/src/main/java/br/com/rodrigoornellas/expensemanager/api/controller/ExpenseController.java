@@ -5,7 +5,6 @@ import br.com.rodrigoornellas.expensemanager.api.controller.response.ExpenseResp
 import br.com.rodrigoornellas.expensemanager.api.controller.router.ExpenseRouter;
 import br.com.rodrigoornellas.expensemanager.api.service.IExpenseService;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
