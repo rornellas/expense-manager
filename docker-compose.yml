@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: db
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: expensemanagerdb
+      MYSQL_ROOT_PASSWORD: MfQq>E!5b&nBQ5:^
+    ports:
+    - 3306:3306
+
+  api:
+    container_name: api-app
+    image: api-app
+    build:
+      context: ./api
+    environment:
+      - SERVER_PORT=8080
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+#  api-nginx:
+#    container_name: api-nginx
+#    image: nginx:1.13
+#    restart: always
+#    ports:
+#      - 80:80
+#      - 443:443
+#    volumes:
+#      - ./nginx/conf.d:/etc/nginx/conf.d
