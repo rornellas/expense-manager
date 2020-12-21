@@ -1,10 +1,12 @@
 import { Observable } from 'rxjs';
 import { ExpensesService } from './expenses.service';
-import { Component, OnInit, PipeTransform } from '@angular/core';
+import { Component, OnDestroy, OnInit, PipeTransform } from '@angular/core';
 import { DatePipe, DecimalPipe } from '@angular/common';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 interface Expense {
+  id: number;
   name: string;
   description: string;
   createdAt: Date;
@@ -22,12 +24,44 @@ export class ExpensesComponent {
 
   expenses$: Observable<Expense[]>;
 
-  expense!: Expense;
+  expenseDetail: any = undefined;
 
-  constructor(pipe: DecimalPipe, private expensesService: ExpensesService) {
+  form: FormGroup;
+
+  constructor(
+    pipe: DecimalPipe, private expensesService: ExpensesService,
+    private formBuilder: FormBuilder, private modalService: NgbModal
+  ) {
     this.expenses$ = this.expensesService.findAll();
+
+    this.form = formBuilder.group( {name: '', description: '', value: '', tags: ''});
   }
 
+  save(expense: Expense): void {
+    this.expensesService.save(expense).subscribe(
+      result => {
+        alert('Register saved successfully!');
+        this.expenses$ = this.expensesService.findAll();
+      },
+      err => {
+        alert('Looks like something went wrong!');
+      }
+    );
+  }
+
+  detail(id: number, content: any): void {
+    this.expenseDetail = undefined;
+
+    this.expensesService.findById(id).subscribe(
+      result => {
+        this.expenseDetail = result;
+        this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+      },
+      err => {
+        alert('Looks like something went wrong!');
+      }
+    );
+  }
 
 }
 

@@ -5,9 +5,6 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
-// tslint:disable-next-line:variable-name
-const URL_v1 = environment.serviceEndpointV1;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +12,15 @@ export class ExpensesService {
 
   constructor(private httpClient: HttpClient ) { }
 
+  save(expense: any): Observable<any> {
+    return this.httpClient.post(environment.serviceEndpointV1, expense);
+  }
+
   findAll(): Observable<any> {
-    return this.httpClient.get(URL_v1);
+    return this.httpClient.get(environment.serviceEndpointV1);
+  }
+
+  findById(id: number): Observable<any> {
+    return this.httpClient.get(environment.serviceEndpointV1.concat(id.toString()));
   }
 }

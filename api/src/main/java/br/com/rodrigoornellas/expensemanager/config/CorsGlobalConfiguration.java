@@ -13,12 +13,9 @@ public class CorsGlobalConfiguration {
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.addAllowedOrigin("*");
+        corsConfig.addAllowedOrigin("localhost");
         corsConfig.addAllowedHeader("*");
-        corsConfig.addAllowedMethod("OPTIONS");
-        corsConfig.addAllowedMethod("GET");
-        corsConfig.addAllowedMethod("POST");
-        corsConfig.addAllowedMethod("PUT");
-        corsConfig.addAllowedMethod("DELETE");
+        corsConfig.addAllowedMethod("*");
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();

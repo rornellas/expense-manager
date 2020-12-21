@@ -23,12 +23,13 @@ services:
     depends_on:
       - db
 
-#  api-nginx:
-#    container_name: api-nginx
-#    image: nginx:1.13
-#    restart: always
-#    ports:
-#      - 80:80
-#      - 443:443
-#    volumes:
-#      - ./nginx/conf.d:/etc/nginx/conf.d
+  frontend:
+    container_name: frontend-app
+    image: frontend-app
+    build:
+      context: ./frontend
+    ports:
+      - 80:80
+    depends_on:
+      - api
+
