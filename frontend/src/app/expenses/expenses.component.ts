@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { ExpensesService } from './expenses.service';
 import { Component, OnDestroy, OnInit, PipeTransform } from '@angular/core';
 import { DatePipe, DecimalPipe } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 interface Expense {
@@ -34,17 +34,18 @@ export class ExpensesComponent {
   ) {
     this.expenses$ = this.expensesService.findAll();
 
-    this.form = formBuilder.group( {name: '', description: '', value: '', tags: ''});
+    this.form = formBuilder.group( {name: ['', Validators.required], description: '', value: [undefined, Validators.required], tags: ''});
   }
 
   save(expense: Expense): void {
     this.expensesService.save(expense).subscribe(
       result => {
-        alert('Register saved successfully!');
+        alert('Registro salvo com sucesso!');
         this.expenses$ = this.expensesService.findAll();
+        this.form.reset();
       },
       err => {
-        alert('Looks like something went wrong!');
+        alert('Algo deu errado...');
       }
     );
   }
@@ -58,7 +59,7 @@ export class ExpensesComponent {
         this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
       },
       err => {
-        alert('Looks like something went wrong!');
+        alert('Algo deu errado...');
       }
     );
   }
