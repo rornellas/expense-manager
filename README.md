@@ -15,4 +15,4 @@ Java, Spring Boot, Spring Data, Webflux, MariaDB, Nodejs, Angular
 
 ## NAVEGAR
 - Acesso à API: http://localhost:8080/swagger-ui.html
-- Acesso à aplicação web angular: http://localhost:8080
+- Acesso à aplicação web angular: http://localhost
