@@ -1,18 +1,18 @@
-#PROJETO EXEMPLO PARA GERENCIAMENTO DE GASTOS
+# PROJETO EXEMPLO PARA GERENCIAMENTO DE GASTOS
 
-##CONTEÚDO
+## CONTEÚDO
 O projeto contém um exemplo de micro serviço para gerenciamento de despesas e uma aplicação web em angular
 
-##STACK
+## STACK
 Java, Spring Boot, Spring Data, Webflux, MariaDB, Nodejs, Angular
 
-##REQUISITOS
+## REQUISITOS
 -docker
 -docker-compose
 
-##EXECUTAR
+## EXECUTAR
 -docker-compose up -d
 
-##NAVEGAR
+## NAVEGAR
 -Acesso à API: http://localhost:8080/swagger-ui.html
 -Acesso à aplicação web angular: http://localhost:8080
