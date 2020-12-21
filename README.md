@@ -7,12 +7,12 @@ O projeto contém um exemplo de micro serviço para gerenciamento de despesas e 
 Java, Spring Boot, Spring Data, Webflux, MariaDB, Nodejs, Angular
 
 ## REQUISITOS
--docker
--docker-compose
+- docker
+- docker-compose
 
 ## EXECUTAR
--docker-compose up -d
+- docker-compose up -d
 
 ## NAVEGAR
--Acesso à API: http://localhost:8080/swagger-ui.html
--Acesso à aplicação web angular: http://localhost:8080
+- Acesso à API: http://localhost:8080/swagger-ui.html
+- Acesso à aplicação web angular: http://localhost:8080
